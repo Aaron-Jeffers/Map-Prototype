@@ -224,6 +224,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5be03505be99664795cb4d7bec23e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vertexThreshold: 0
+  thickness: 0
+  snapToPath: 0
+  line: {fileID: 0}
+  pathPoints: []
+  spriteMask: {fileID: 0}
+  scratchRenderCamera: {fileID: 0}
 --- !u!1 &114158923
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,6 +799,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f27eb01e94755440b83330ba36dbfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vertexThreshold: 0
+  thickness: 0
+  snapToPath: 0
+  line: {fileID: 0}
+  pathPoints: []
+  spriteMask: {fileID: 0}
+  scratchRenderCamera: {fileID: 0}
 --- !u!212 &279991514
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1331,6 +1345,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f27eb01e94755440b83330ba36dbfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vertexThreshold: 0
+  thickness: 0
+  snapToPath: 0
+  line: {fileID: 0}
+  pathPoints: []
+  spriteMask: {fileID: 0}
+  scratchRenderCamera: {fileID: 0}
 --- !u!212 &422060641
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1880,6 +1901,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5be03505be99664795cb4d7bec23e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vertexThreshold: 0
+  thickness: 0
+  snapToPath: 0
+  line: {fileID: 0}
+  pathPoints: []
+  spriteMask: {fileID: 0}
+  scratchRenderCamera: {fileID: 0}
 --- !u!1 &735092504
 GameObject:
   m_ObjectHideFlags: 0
@@ -1961,6 +1989,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f27eb01e94755440b83330ba36dbfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vertexThreshold: 0
+  thickness: 0
+  snapToPath: 0
+  line: {fileID: 0}
+  pathPoints: []
+  spriteMask: {fileID: 0}
+  scratchRenderCamera: {fileID: 0}
 --- !u!212 &759540820
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3624,6 +3659,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f27eb01e94755440b83330ba36dbfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vertexThreshold: 0
+  thickness: 0
+  snapToPath: 0
+  line: {fileID: 0}
+  pathPoints: []
+  spriteMask: {fileID: 0}
+  scratchRenderCamera: {fileID: 0}
 --- !u!212 &1498214026
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3746,6 +3788,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f27eb01e94755440b83330ba36dbfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vertexThreshold: 0
+  thickness: 0
+  snapToPath: 0
+  line: {fileID: 0}
+  pathPoints: []
+  spriteMask: {fileID: 0}
+  scratchRenderCamera: {fileID: 0}
 --- !u!212 &1536150989
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4524,6 +4573,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f27eb01e94755440b83330ba36dbfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vertexThreshold: 0
+  thickness: 0
+  snapToPath: 0
+  line: {fileID: 0}
+  pathPoints: []
+  spriteMask: {fileID: 0}
+  scratchRenderCamera: {fileID: 0}
 --- !u!212 &2095077073
 SpriteRenderer:
   m_ObjectHideFlags: 0

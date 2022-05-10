@@ -6,7 +6,10 @@ public class Checkpoint : MouseDetection
 {
     private void OnMouseEnter()
     {
-        Printy(tag);
-        gameObject.SetActive(false);
+        if(drawing)
+        {
+            PrintTag(tag);
+            gameObject.SetActive(false);
+        }        
     }
 }

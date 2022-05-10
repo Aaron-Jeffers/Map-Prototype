@@ -69,5 +69,8 @@ public class Scratcher : LineDrawer
         }
     }
     
-
+    public bool IsDrawing()
+    {
+        return drawing;
+    }
 }
