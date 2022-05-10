@@ -23,7 +23,7 @@ public class Scratcher : LineDrawer
     {
         if(drawing)
         {
-            spriteMask.sprite = screenCapture.ReturnSpriteMask();
+            //spriteMask.sprite = screenCapture.ReturnSpriteMask();
         }
 
         InputHandler();
@@ -41,11 +41,12 @@ public class Scratcher : LineDrawer
         //When mouse 1 is held
         if (Input.GetButton("Fire1"))
         {
-            drawing = true;
+            //drawing = true;
             Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
             if (Vector2.Distance(mousePosition, vertexPos[vertexPos.Count - 1]) >= vertexThreshold)
             {
                 AddVertex(mousePosition);
+                spriteMask.sprite = screenCapture.ReturnSpriteMask();
             }
         }
 
@@ -67,4 +68,6 @@ public class Scratcher : LineDrawer
             Destroy(line);
         }
     }
+    
+
 }
