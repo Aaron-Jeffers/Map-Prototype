@@ -2,22 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Script that handles line drawing and snapping the line to a path
+/// </summary>
 public class LineDrawer : MonoBehaviour
 {
     /// <summary List of line variables>
     /// Variables
     /// </summary>
+    [Tooltip("Distance between each vertex of the line renderer")]
     public float vertexThreshold;
+    [Tooltip("Width of the line renderer")]
     public float thickness;
+    [Tooltip("Wether to snap the line renderer to the path once a player has let go of the mouse button")]
     public bool snapToPath;
+    [Tooltip("Determines if player is drawing a line")]
+    protected bool drawing;
 
     /// <summary List of line references>
     /// References
     /// </summary>
-    Camera cam;  //Main camera
-    public GameObject line;  //Line to be drawn
-    LineRenderer lineRenderer;  //Line renderer component
-    public List<Vector3> vertexPos = new List<Vector3>();  //List of line renderer positions
+    [Tooltip("Main Camera")]
+    protected Camera cam;  
+    [Tooltip("The line prefab")]
+    public GameObject line;
+    [Tooltip("The line renderer component")]
+    protected LineRenderer lineRenderer;
+    [Tooltip("Vertex positions of the line renderer")]
+    protected List<Vector3> vertexPos = new List<Vector3>();
+    [Tooltip("Positions of all the nodes of the path")]
     public List<Transform> pathPoints = new List<Transform>();
 
     void Start()
@@ -30,8 +43,6 @@ public class LineDrawer : MonoBehaviour
         {
             children.Add(child.gameObject);
         }
-        Debug.Log(children.Count);
-        //children.AddRange(GetComponentsInChildren<GameObject>());
 
         for (int i = 0; i < children.Count; i++)
         {
@@ -42,42 +53,15 @@ public class LineDrawer : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        //When mouse 1 is pressed
-        if(Input.GetButtonDown("Fire1"))
-        {
-            InstantiateLine();
-        }
-
-        //When mouse 1 is held
-        if(Input.GetButton("Fire1"))
-        {
-            Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
-            if(Vector2.Distance(mousePosition, vertexPos[vertexPos.Count - 1]) > vertexThreshold)
-            {
-                AddVertex(mousePosition);
-            }
-        }
-
-        //When mouse 1 is released
-        if (Input.GetButtonUp("Fire1") && snapToPath)
-        {
-            for (int i = 0; i < vertexPos.Count; i++)
-            {
-                vertexPos[i] = GetClosestPoint(vertexPos[i]);       //Gets closest path point to each line renderer vertex
-                vertexPos[i] = new Vector3(vertexPos[i].x, vertexPos[i].y, 0);  //Zeros the z-axis
-                lineRenderer.SetPosition(i, vertexPos[i]);   //Sets new vertex position 
-            }
-        }
-    }
-
     /// <summary>
     /// Instantiates new line and deletes old one if applicable
     /// </summary>
-    void InstantiateLine()
+    protected void InstantiateLine()
     {
-        if(line) { Destroy(line); } //Destroys old line
+        if(line) 
+        {
+            Destroy(line);         //Destroys old line
+        }
         vertexPos.Clear();  //Clears list of vertex points
 
         //Instantiates new line and sets parameters
@@ -99,7 +83,7 @@ public class LineDrawer : MonoBehaviour
     /// Adds vertices to the current line being drawn
     /// </summary>
     /// <param name="vertex"></param>
-    void AddVertex(Vector3 vertex)
+    protected void AddVertex(Vector3 vertex)
     {
         vertexPos.Add(vertex);
         lineRenderer.positionCount = vertexPos.Count;
@@ -111,7 +95,7 @@ public class LineDrawer : MonoBehaviour
     /// </summary>
     /// <param name="vertex"></param>
     /// <returns></returns>
-    Vector3 GetClosestPoint(Vector3 vertex)
+    protected Vector3 GetClosestPoint(Vector3 vertex)
     {
         Vector3 closestPoint = new Vector3(100,100,100);    //Closest point initialised with arbitrarily large number so will never be selected
 
