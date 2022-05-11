@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
+
 
 public class MouseDetection : MonoBehaviour
-{
+{ 
     protected Camera camera;
     protected Scratcher scratcher;
     protected GameObject redCross;
@@ -25,4 +26,6 @@ public class MouseDetection : MonoBehaviour
     {
         drawing = scratcher.IsDrawing();
     }
+
+    
 }

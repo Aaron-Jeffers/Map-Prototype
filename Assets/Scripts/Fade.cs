@@ -1,11 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Fade : MonoBehaviour
 {
     float timer;
-    float fadeAmount = 0f;
+    readonly float fadeAmount = 0f;
     Vector2 fadeTimeRange = new Vector2(2f, 7f);
     bool fade;
 

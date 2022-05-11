@@ -1,24 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 
 /// <summary>
 /// Script that handles line drawing and snapping the line to a path
 /// </summary>
 public class LineDrawer : MonoBehaviour
 {
+    #region Variables
     /// <summary List of line variables>
     /// Variables
     /// </summary>
     [Tooltip("Distance between each vertex of the line renderer")]
     public float vertexThreshold;
+    [Tooltip("Maximum length of the line being drawn")]
+    public float maxLength;
+    [Tooltip("Maximum vertices based off maximum line length and vertex threshold")]
+    protected int maxVertices;
     [Tooltip("Width of the line renderer")]
     public float thickness;
     [Tooltip("Wether to snap the line renderer to the path once a player has let go of the mouse button")]
     public bool snapToPath;
     [Tooltip("Determines if player is drawing a line")]
     protected bool drawing;
+    [Tooltip("Determines if player can draw more than one line")]
+    protected bool multiLine;
+    #endregion
 
+    #region References
     /// <summary List of line references>
     /// References
     /// </summary>
@@ -32,11 +43,18 @@ public class LineDrawer : MonoBehaviour
     protected List<Vector3> vertexPos = new List<Vector3>();
     [Tooltip("Positions of all the nodes of the path")]
     public List<Transform> pathPoints = new List<Transform>();
+    [Tooltip("List of drawn line renderers")]
+    protected List<LineRenderer> lineRenderers = new List<LineRenderer>();
+    [Tooltip("Reference to mouse")]
+    protected Mouse mouse;
+    #endregion
 
     void Start()
     {
+        mouse = Mouse.current;
         lineRenderer = GetComponent<LineRenderer>();
         cam = Camera.main;
+        maxVertices = Mathf.RoundToInt(maxLength / vertexThreshold);
 
         List<GameObject> children = new List<GameObject>();
         foreach (Transform child in transform)
@@ -60,7 +78,7 @@ public class LineDrawer : MonoBehaviour
     {
         if(line) 
         {
-            Destroy(line);         //Destroys old line
+            //Destroy(line);         //Destroys old line
         }
         vertexPos.Clear();  //Clears list of vertex points
 
@@ -73,7 +91,7 @@ public class LineDrawer : MonoBehaviour
         //Sets first two line positions as mouse position
         for (int i = 0; i < 2; i++)
         {
-            vertexPos.Add(cam.ScreenToWorldPoint(Input.mousePosition));
+            vertexPos.Add(cam.ScreenToWorldPoint(mouse.position.ReadValue()));
             vertexPos[i] = new Vector3(vertexPos[i].x, vertexPos[i].y, 0);
             lineRenderer.SetPosition(i, vertexPos[i]);
         }
