@@ -88,13 +88,6 @@ public class LineDrawer : MonoBehaviour
     /// </summary>
     protected void InstantiateLine()
     {       
-        if (lineDrawn && snapToLastLine) 
-        {
-            Vector2 warpPosition = cam.WorldToScreenPoint(vertexPos[vertexPos.Count - 1]);  
-            mouse.WarpCursorPosition(warpPosition);
-            InputState.Change(mouse.position, warpPosition);
-            //Destroy(line);         //Destroys old line
-        }
         vertexPos.Clear();  //Clears list of vertex points
 
         //Instantiates new line and sets parameters

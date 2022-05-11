@@ -1099,7 +1099,7 @@ MonoBehaviour:
   maxLength: 5
   thickness: 0.2
   snapToPath: 1
-  snapToLastLine: 0
+  snapToLastLine: 1
   line: {fileID: 6017125430864119856, guid: 28a56e8d6eccc7a4ca58de43ed6638f7, type: 3}
   pathPoints:
   - {fileID: 979453288}

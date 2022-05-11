@@ -35,6 +35,7 @@ public class Scratcher : LineDrawer
         //When mouse 0 is pressed
         if (mouse.leftButton.wasPressedThisFrame)
         {
+            SetMousePosition();
             InstantiateLine();
             drawing = true;
         }
@@ -117,6 +118,7 @@ public class Scratcher : LineDrawer
         if(lines.Count != 0)
         {
             line = lines[lines.Count - 1];  //Sets new line as the new last index in lines as the previous was deleted and removed
+            lineRenderer = line.GetComponent<LineRenderer>(); //Sets new line renderer reference
         }        
     }
 
@@ -128,6 +130,19 @@ public class Scratcher : LineDrawer
         spriteMask.sprite = screenCapture.ReturnSpriteMask();
     }
 
+    /// <summary>
+    /// Sets new mouse position equal to end of last line renderer
+    /// </summary>
+    void SetMousePosition()
+    {
+        if (lineDrawn && snapToLastLine)
+        {
+            Vector2 warpPosition = cam.WorldToScreenPoint(lineRenderer.GetPosition(lineRenderer.positionCount - 1));
+            mouse.WarpCursorPosition(warpPosition);
+            InputState.Change(mouse.position, warpPosition);
+            //Destroy(line);         //Destroys old line
+        }
+    }
     /// <summary>
     /// Simple boolean return for whether or not teh player is currently drawing
     /// </summary>

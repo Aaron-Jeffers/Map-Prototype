@@ -62,8 +62,8 @@
     <Compile Include="Assets\Scripts\Barrier.cs" />
     <Compile Include="Assets\Scripts\ScreenCapture.cs" />
     <Compile Include="Assets\Scripts\Scratcher.cs" />
-    <Compile Include="Assets\Scripts\MouseDetection.cs" />
     <Compile Include="Assets\Scripts\Fade_Scale.cs" />
+    <Compile Include="Assets\Scripts\MouseDetection.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
