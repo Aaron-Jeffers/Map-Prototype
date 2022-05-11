@@ -58,12 +58,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\LineDrawer.cs" />
     <Compile Include="Assets\Scripts\Checkpoint.cs" />
-    <Compile Include="Assets\Scripts\SetCursorPos.cs" />
     <Compile Include="Assets\Scripts\Fade.cs" />
     <Compile Include="Assets\Scripts\Barrier.cs" />
     <Compile Include="Assets\Scripts\ScreenCapture.cs" />
     <Compile Include="Assets\Scripts\Scratcher.cs" />
     <Compile Include="Assets\Scripts\MouseDetection.cs" />
+    <Compile Include="Assets\Scripts\Fade_Scale.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

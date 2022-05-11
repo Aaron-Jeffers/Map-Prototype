@@ -7,13 +7,19 @@ using UnityEngine;
 /// </summary>
 public class ScreenCapture : MonoBehaviour
 {
-    //References
-    Camera thisCamera;
+    #region References
 
-    //Variables
-    int screenHeight, screenWidth;
+    Camera thisCamera;      //Camera that renders the lines drawn and the effect on the layer mask
+
+    #endregion 
+
+    #region Variables
+
+    int screenHeight, screenWidth;  
     int depth = 24;
-    
+
+    #endregion
+
     private void Awake()
     {
         thisCamera = GetComponent<Camera>();

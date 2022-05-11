@@ -27,6 +27,10 @@ public class LineDrawer : MonoBehaviour
     protected bool drawing;
     [Tooltip("Determines if player can draw more than one line")]
     protected bool multiLine;
+    [Tooltip("Determines if the player has drawn a line before")]
+    protected bool lineDrawn;
+    [Tooltip("Determines if the cursor position should be set to the previous line renderers position on instantiation of a new line")]
+    public bool snapToLastLine;
     #endregion
 
     #region References
@@ -44,18 +48,26 @@ public class LineDrawer : MonoBehaviour
     [Tooltip("Positions of all the nodes of the path")]
     public List<Transform> pathPoints = new List<Transform>();
     [Tooltip("List of drawn line renderers")]
-    protected List<LineRenderer> lineRenderers = new List<LineRenderer>();
+    public List<GameObject> lines = new List<GameObject>();
     [Tooltip("Reference to mouse")]
     protected Mouse mouse;
     #endregion
 
     void Start()
-    {
+    {       
         mouse = Mouse.current;
         lineRenderer = GetComponent<LineRenderer>();
         cam = Camera.main;
         maxVertices = Mathf.RoundToInt(maxLength / vertexThreshold);
 
+        InitialisePathList ();
+    }
+
+    /// <summary>
+    /// Initialises the path list that the player can move along
+    /// </summary>
+    void InitialisePathList()
+    {
         List<GameObject> children = new List<GameObject>();
         foreach (Transform child in transform)
         {
@@ -75,9 +87,12 @@ public class LineDrawer : MonoBehaviour
     /// Instantiates new line and deletes old one if applicable
     /// </summary>
     protected void InstantiateLine()
-    {
-        if(line) 
+    {       
+        if (lineDrawn && snapToLastLine) 
         {
+            Vector2 warpPosition = cam.WorldToScreenPoint(vertexPos[vertexPos.Count - 1]);  
+            mouse.WarpCursorPosition(warpPosition);
+            InputState.Change(mouse.position, warpPosition);
             //Destroy(line);         //Destroys old line
         }
         vertexPos.Clear();  //Clears list of vertex points
@@ -95,6 +110,8 @@ public class LineDrawer : MonoBehaviour
             vertexPos[i] = new Vector3(vertexPos[i].x, vertexPos[i].y, 0);
             lineRenderer.SetPosition(i, vertexPos[i]);
         }
+
+        lineDrawn = true;
     }
 
     /// <summary>
