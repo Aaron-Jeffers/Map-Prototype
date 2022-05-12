@@ -18,7 +18,8 @@ public class Barrier : MouseDetection, IPointerEnterHandler, IPointerExitHandler
         if (drawing)
         {
             var temp = Instantiate(redCross, camera.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);      //Instantiates the red cross
-            temp.GetComponent<Fade>().StartTimer();     
+            temp.GetComponent<Fade>().StartTimer();
+            scratcher.SetDrawing(false);
         }
     }
 

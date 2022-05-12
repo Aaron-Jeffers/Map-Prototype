@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
-/// <summary>
-/// Handles scratching out effect and creating a new sprite, inherits from Line Drawer
-/// </summary>
+
 public class Scratcher : LineDrawer
 {
     #region References
@@ -41,7 +39,7 @@ public class Scratcher : LineDrawer
         }
 
         //When mouse 0 is held
-        if (mouse.leftButton.isPressed)
+        if (mouse.leftButton.isPressed && drawing)
         {
             Scratch();
         }
@@ -49,8 +47,7 @@ public class Scratcher : LineDrawer
         //When mouse 0 is released
         if (mouse.leftButton.wasReleasedThisFrame)
         {
-            EndScratch();
-            
+            EndScratch();            
         }
         //When mouse 1 is pressed
         if (mouse.rightButton.wasPressedThisFrame)
@@ -135,7 +132,7 @@ public class Scratcher : LineDrawer
     /// </summary>
     void SetMousePosition()
     {
-        if (lineDrawn && snapToLastLine)
+        if (lineDrawn && snapToLastLine && lineRenderer)
         {
             Vector2 warpPosition = cam.WorldToScreenPoint(lineRenderer.GetPosition(lineRenderer.positionCount - 1));
             mouse.WarpCursorPosition(warpPosition);
@@ -150,5 +147,13 @@ public class Scratcher : LineDrawer
     public bool IsDrawing()
     {
         return drawing;
+    }
+    /// <summary>
+    /// Simple boolean to set drawing state
+    /// </summary>
+    /// <returns></returns>
+    public void SetDrawing(bool draw)
+    {
+        drawing = draw;
     }
 }

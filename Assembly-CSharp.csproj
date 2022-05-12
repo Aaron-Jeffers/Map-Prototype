@@ -64,6 +64,9 @@
     <Compile Include="Assets\Scripts\Scratcher.cs" />
     <Compile Include="Assets\Scripts\Fade_Scale.cs" />
     <Compile Include="Assets\Scripts\MouseDetection.cs" />
+    <Compile Include="Assets\Scripts\SpriteMasker.cs" />
+    <Compile Include="Assets\Scripts\Drawer.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
