@@ -16,6 +16,8 @@ public class Drawer : MonoBehaviour
     [Header("Variables")]
     [Tooltip("Minimum distance between each brush instantiation")]
     [SerializeField] protected float drawThreshold;
+    [Tooltip("Maximum distance between brush instantiation and player")]
+    protected float drawThresholdToPlayer;
     [Tooltip("Minimum distance between each mouse and brush stroke to erase")]
     [SerializeField] protected float eraseRadius;
     [Tooltip("Size of the brush")]
@@ -77,6 +79,7 @@ public class Drawer : MonoBehaviour
         //Draw brush, instantiate
         //Add to list 
         if (brushStrokesTaken >= maxBrushStroke) { return; }
+        if (Vector2.Distance(position, player.transform.position) > (circle.transform.localScale.x / 2) ) { return; }
         brush = Instantiate(brushPrefab, position, Quaternion.identity);
         brush.transform.localScale *= brushRadius;
         brushesDrawn.Add(brush);

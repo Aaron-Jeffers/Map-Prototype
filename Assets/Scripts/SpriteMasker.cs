@@ -21,7 +21,7 @@ public class SpriteMasker : Drawer
         screenCapture = scratchRenderCamera.GetComponent<ScreenCapture>();
         brushPrefab = Resources.Load<GameObject>("Brush").gameObject;
         circlePrefab = Resources.Load<GameObject>("PlayerCircle").gameObject;
-
+        
         InitialisePathList();
     }
     private void Start()
