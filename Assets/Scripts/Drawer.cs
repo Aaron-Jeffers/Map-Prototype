@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
 /// <summary>
-/// Script that handles line drawing and snapping the line to a path
+/// Script that handles drawing function
 /// </summary>
 public class Drawer : MonoBehaviour
 {
@@ -14,24 +14,22 @@ public class Drawer : MonoBehaviour
     /// Variables
     /// </summary>
     [Header("Variables")]
-    [Tooltip("Minimum distance between each brush instantiation")]
-    [SerializeField] protected float drawThreshold;
+    [Tooltip("Bool to determine maximum distance between brush instantiation and player")][SerializeField]
+    protected bool limitDrawing;
+    [Tooltip("Minimum distance between each brush instantiation")][Range(0.001f, 10f)][SerializeField] 
+    protected float drawThreshold;
     [Tooltip("Maximum distance between brush instantiation and player")]
     protected float drawThresholdToPlayer;
-    [Tooltip("Bool to determine maximum distance between brush instantiation and player")]
-    [SerializeField] protected bool limitDrawing;
-    [Tooltip("Minimum distance between each mouse and brush stroke to erase")]
-    [SerializeField] protected float eraseRadius;
-    [Tooltip("Size of the brush")]
-    [Range(0.1f,10f)]
-    [SerializeField] protected float brushRadius;
-    [Tooltip("Size of the circle")]
-    [Range(0.1f, 10f)]
-    [SerializeField] protected float circleRadius;
-    [Tooltip("Maximum number of brush strokes")]
-    [SerializeField] protected int maxBrushStroke;
-    [Tooltip("Number of brush strokes taken")]
-    [SerializeField] protected int brushStrokesTaken;
+    [Tooltip("Minimum distance between each mouse and brush stroke to erase")] [Range(0.1f, 10f)][SerializeField] 
+    protected float eraseRadius;
+    [Tooltip("Size of the brush")][Range(0.1f,10f)][SerializeField] 
+    protected float brushRadius;
+    [Tooltip("Size of the circle")][Range(0.1f, 10f)][SerializeField] 
+    protected float circleRadius;
+    [Tooltip("Maximum number of brush strokes")][SerializeField][Range(0, 10000)]
+    protected int maxBrushStroke;
+    [Tooltip("Number of brush strokes taken")][SerializeField] 
+    protected int brushStrokesTaken;           //Serialized for debugging
     [Tooltip("Determines if player is drawing")]
     protected bool drawing;
     [Tooltip("Determines if player is erasing")]
@@ -45,14 +43,14 @@ public class Drawer : MonoBehaviour
     [Header("References")]
     [Tooltip("Main Camera")]
     protected Camera cam;
-    [Tooltip("The player component")]
-    [SerializeField]protected GameObject player;
+    [Tooltip("The player component")][SerializeField]
+    protected GameObject player;
     [Tooltip("The circle")]
-    public GameObject circle;
+    protected GameObject circle;
     [Tooltip("The circle prefab")]
     public GameObject circlePrefab;    
     [Tooltip("The brush")]
-    public GameObject brush;
+    protected GameObject brush;
     [Tooltip("The brush prefab")]
     public GameObject brushPrefab;
     [Tooltip("List of all brush strokes instantiated and active")]
@@ -66,7 +64,7 @@ public class Drawer : MonoBehaviour
     protected void InitialiseCircle()
     {
         circle = Instantiate(circlePrefab, player.transform.position, Quaternion.identity);
-        circle.transform.localScale *= circleRadius;
+        circle.transform.localScale = new Vector3(circleRadius, circleRadius, circleRadius);
     }
 
     protected void UpdateCircle()
@@ -74,6 +72,7 @@ public class Drawer : MonoBehaviour
         //Move circle along with player
 
         circle.transform.position = player.transform.position;
+        circle.transform.localScale = new Vector3(circleRadius, circleRadius, circleRadius); 
     }
 
     protected void DrawBrush(Vector2 position)
@@ -81,10 +80,11 @@ public class Drawer : MonoBehaviour
         //Draw brush, instantiate
         //Add to list 
         if (brushStrokesTaken >= maxBrushStroke) { return; }
-        if(limitDrawing)
-        {
-            if (Vector2.Distance(position, player.transform.position) > (circle.transform.localScale.x / 2)) { return; }
-        }        
+        if (GetBrushesInRange(position, drawThreshold).Count > 0) { return; }
+        if (limitDrawing) { if (Vector2.Distance(position, player.transform.position) > (circleRadius / 2) - (brushRadius / 2)) { return; } }
+        var mousePos = mouse.position.ReadValue();
+        if (mousePos.x < 0 || mousePos.y < 0 || mousePos.x > Screen.width || mousePos.y > Screen.height) { return;  }
+
         brush = Instantiate(brushPrefab, position, Quaternion.identity);
         brush.transform.localScale *= brushRadius;
         brushesDrawn.Add(brush);
@@ -96,7 +96,7 @@ public class Drawer : MonoBehaviour
         //Get list of all brushes within radius
         //Remove from list
         //Delete
-        List<GameObject> brushes2Erase = GetBrushesInRange(position);
+        List<GameObject> brushes2Erase = GetBrushesInRange(position, eraseRadius);
 
         for (int i = 0; i < brushes2Erase.Count; i++)
         {
@@ -132,7 +132,7 @@ public class Drawer : MonoBehaviour
         player.GetComponent<PlayerController>().InitialisePlayer(pathPoints);
     }
 
-    private List<GameObject> GetBrushesInRange(Vector3 mousePosition)
+    private List<GameObject> GetBrushesInRange(Vector3 mousePosition, float radius)
     {
         List<GameObject> brushesInRange = new List<GameObject>();
 
@@ -141,7 +141,7 @@ public class Drawer : MonoBehaviour
             Vector2 dist2Brush = brushesDrawn[i].transform.position - mousePosition;
             float distance = dist2Brush.sqrMagnitude;
 
-            if (distance <= Mathf.Pow(eraseRadius,2))
+            if (distance <= Mathf.Pow(radius,2))
             {
                 brushesInRange.Add(brushesDrawn[i]);
             }

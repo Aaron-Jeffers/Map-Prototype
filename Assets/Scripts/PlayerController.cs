@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private int nextTarget = 0;
     private int next = 1;
     private int targetCount;
+    bool shouldMove;
 
     //References
     [Tooltip("Positions of all the nodes of the path")]
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     public void InitialisePlayer(List<Transform> transforms)
     {
+        shouldMove = true;
         pathPoints = transforms;
         transform.position = pathPoints[0].position;
         targetCount = pathPoints.Count - 1;
@@ -30,16 +32,28 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+        if (!shouldMove) { return; }
         Vector3 target = (pathPoints[nextTarget].position - transform.position);
         if(target.sqrMagnitude <= 0.01f)
         {
             nextTarget += next;
+            if (nextTarget == pathPoints.Count) { shouldMove = false; }
         }
 
-        if(nextTarget == 0 || nextTarget >= targetCount -1)
-        {
-            next *= -1;
-        }
+        //if(nextTarget == 0 || nextTarget >= targetCount -1)
+        //{
+        //    next *= -1;
+        //}
         transform.position += target.normalized * moveSpeed * Time.deltaTime;
+    }
+
+    public void SetSpeed(float speed)
+    {
+        moveSpeed = speed;
+    }
+
+    public List<Transform> GetPathPoints()
+    {
+        return pathPoints;
     }
 }
