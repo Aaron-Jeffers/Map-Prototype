@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\Interaction\MouseDetection.cs" />
     <Compile Include="Assets\Scripts\Draw\LineDrawer.cs" />
     <Compile Include="Assets\Scripts\Interaction\Checkpoint.cs" />
+    <Compile Include="Assets\Scripts\Animation\Interpolation.cs" />
     <Compile Include="Assets\Scripts\Animation\Fade.cs" />
     <Compile Include="Assets\Scripts\Draw\ScreenCapture.cs" />
     <Compile Include="Assets\Scripts\Draw\Scratcher.cs" />
@@ -68,7 +69,7 @@
     <Compile Include="Assets\Scripts\Draw\Drawer.cs" />
     <Compile Include="Assets\Scripts\Animation\Fade_Scale.cs" />
     <Compile Include="Assets\Scripts\Player\Narration.cs" />
-    <Compile Include="Assets\Scripts\Animation\Interpolation.cs" />
+    <Compile Include="Assets\Scripts\Player\Controls.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\Shaders\Mask.shader" />
