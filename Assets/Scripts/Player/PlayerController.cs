@@ -2,20 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the player movement around the map
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
-    //Variables
+    #region Variables
     [Tooltip("Positions of all the nodes of the path")]
     [SerializeField] private float moveSpeed;
-    [Tooltip("NextTarget")]
+    [Tooltip("Next target to reach")]
     private int nextTarget = 0;
     private int next = 1;
     private int targetCount;
     bool shouldMove;
+    #endregion
 
-    //References
+    #region References
     [Tooltip("Positions of all the nodes of the path")]
-    [SerializeField] private List<Transform> pathPoints = new List<Transform>();  
+    [SerializeField] private List<Transform> pathPoints = new List<Transform>();
+    #endregion
 
     public void InitialisePlayer(List<Transform> transforms)
     {

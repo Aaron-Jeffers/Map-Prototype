@@ -10,19 +10,25 @@ class Interpolation : MonoBehaviour
 {
     [Tooltip("Animation curve used to set scale interpolation over time. Advise limiting y-value between the range (-1,1) and using scaleOffset to set magnitude. There is currently no way to automaticallly limit this in unity. X-axis or time can be set from (0,infinity)")][SerializeField]
     AnimationCurve interpolationCurve;
+    [Tooltip("Flipped variation of the animation curve")]
     AnimationCurve interpolationCurveFlipped;
     
     [Range(1f,10f)][Tooltip("Magnitude of interpolation value at time(t) of animation curve")][SerializeField]
     float scaleOffset;
-    float xMax, xMin;
+    [Tooltip("Maximum time value of the animation curve")]
+    float xMax;
+    [Tooltip("Number of key frames in the animation curve")]
     int length;
-    bool flipped, scaling;
+    [Tooltip("Bool to determine which animation curve to use for scaling")]
+    bool flipped;
+    [Tooltip("Bool to determine if player circle is currently rescaling")]
+    bool scaling;
 
     private void Start()
     {
         FlipCurve();
-        
     }
+
     private void Update()
     {
    
@@ -52,7 +58,6 @@ class Interpolation : MonoBehaviour
     void FlipCurve()
     {
         length = interpolationCurve.length;          //Number of key frames on the curve
-        xMin = interpolationCurve.keys[0].time;      //Time value of first key
         xMax = interpolationCurve[length - 1].time;  //Time value of last key
         
         interpolationCurveFlipped = new AnimationCurve();
@@ -86,12 +91,17 @@ class Interpolation : MonoBehaviour
         return maxValue;
     }
 
+    /// <summary>
+    /// Interpolates scaling of an object over time based on the evaluation of the animation curve at each point in time
+    /// </summary>
+    /// <param name="curve"></param>
+    /// <param name="time"></param>
+    /// <returns></returns>
     IEnumerator ScaleCircle(AnimationCurve curve,float time)
     {
         flipped = !flipped;
         scaling = true;
 
-        
         Vector3 originalScale = transform.localScale;
         
         for (float t = 0f; t < time; t += Time.deltaTime)

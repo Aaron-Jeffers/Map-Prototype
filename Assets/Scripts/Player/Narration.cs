@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the narration audio
+/// </summary>
 public class Narration : MonoBehaviour
 {
     public AudioClip audio;
@@ -12,7 +15,6 @@ public class Narration : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
-        //audio = GetComponent<AudioSource>().GetComponent<AudioClip>();
         pathPoints = player.GetPathPoints();
 
         float time = audio.length;

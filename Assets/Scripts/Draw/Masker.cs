@@ -6,19 +6,10 @@ using UnityEngine.InputSystem.LowLevel;
 
 public class Masker : Drawer
 {
-    #region References
-    [Tooltip("The sprite mask used for the scratch effect")]
-    public SpriteMask spriteMask;
-    [Tooltip("The camera used to render the sprite mask used for the scratch effect")]
-    public Camera scratchRenderCamera;
-    ScreenCapture screenCapture;    //Screen capture script
-    #endregion
-
     private void Awake()
     {
         mouse = Mouse.current;
         cam = Camera.main;
-        screenCapture = scratchRenderCamera.GetComponent<ScreenCapture>();
         //brushPrefab = Resources.Load<GameObject>("Brush").gameObject;
         //circlePrefab = Resources.Load<GameObject>("PlayerCircle").gameObject;
         
@@ -82,25 +73,22 @@ public class Masker : Drawer
         }
     }
 
+    /// <summary>
+    /// Calls the draw brush method. Potentially deprecated from earlier versions with more functionality, might change to a direct call rather than this reference method.
+    /// </summary>
     void Draw()
     {
         DrawBrush(cam.ScreenToWorldPoint(mouse.position.ReadValue()));
-        //NewSpriteMask();
-    }
-    void Erase()
-    {
-        EraseBrush(cam.ScreenToWorldPoint(mouse.position.ReadValue()));
-        //NewSpriteMask();
     }
 
     /// <summary>
-    /// Generates a new sprite mask
+    /// Calls the erase brush method. Potentially deprecatedfrom earlier versions with more functionality, might change to a direct call rather than this reference method.
     /// </summary>
-    void NewSpriteMask()
+    void Erase()
     {
-        spriteMask.sprite = screenCapture.ReturnSpriteMask();
+        EraseBrush(cam.ScreenToWorldPoint(mouse.position.ReadValue()));
     }
-    
+
     /// <summary>
     /// Simple boolean return for whether or not teh player is currently drawing
     /// </summary>
@@ -109,6 +97,7 @@ public class Masker : Drawer
     {
         return drawing;
     }
+
     /// <summary>
     /// Simple boolean to set drawing state
     /// </summary>
