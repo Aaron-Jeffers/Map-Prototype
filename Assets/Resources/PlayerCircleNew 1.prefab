@@ -166,5 +166,3 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   scaleOffset: 3
-  flipped: 1
-  scaling: 0

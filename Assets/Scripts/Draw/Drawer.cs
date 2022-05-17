@@ -72,7 +72,7 @@ public class Drawer : MonoBehaviour
         //Move circle along with player
 
         circle.transform.position = player.transform.position;
-        circle.transform.localScale = new Vector3(circleRadius, circleRadius, circleRadius); 
+        //circle.transform.localScale = new Vector3(circleRadius, circleRadius, circleRadius); 
     }
 
     protected void DrawBrush(Vector2 position)

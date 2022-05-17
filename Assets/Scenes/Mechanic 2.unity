@@ -4273,7 +4273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d966cb0cce1fbed459c4dc6abaf448ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limitDrawing: 0
+  limitDrawing: 1
   drawThreshold: 0.002
   eraseRadius: 0.2
   brushRadius: 0.2
