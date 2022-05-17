@@ -736,7 +736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &327885120
 Transform:
   m_ObjectHideFlags: 0
@@ -3054,7 +3054,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!20 &1013243656
 Camera:
   m_ObjectHideFlags: 0
@@ -4273,7 +4273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d966cb0cce1fbed459c4dc6abaf448ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limitDrawing: 1
+  limitDrawing: 0
   drawThreshold: 0.002
   eraseRadius: 0.2
   brushRadius: 0.2
@@ -4283,6 +4283,7 @@ MonoBehaviour:
   player: {fileID: 404554663}
   circlePrefab: {fileID: 8318478510416538959, guid: 5250f3ce76e3d8d48b05f0b4ccdb4c72, type: 3}
   brushPrefab: {fileID: 8318478510416538959, guid: 7b90035d49546a2438c105e6b110cbea, type: 3}
+  brushSpritePrefab: {fileID: 909485030581430736, guid: 07bd8eb930d17d6499a2121e46f3e1bc, type: 3}
   brushesDrawn: []
   pathPoints:
   - {fileID: 1236261224}
@@ -4326,8 +4327,6 @@ MonoBehaviour:
   - {fileID: 1077792075}
   - {fileID: 1942115576}
   - {fileID: 453094912}
-  spriteMask: {fileID: 327885121}
-  scratchRenderCamera: {fileID: 1013243656}
 --- !u!1 &1496551126
 GameObject:
   m_ObjectHideFlags: 0

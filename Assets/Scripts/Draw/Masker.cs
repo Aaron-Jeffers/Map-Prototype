@@ -35,8 +35,9 @@ public class Masker : Drawer
         //When mouse 0 is pressed
         if (mouse.leftButton.wasPressedThisFrame)
         {
-            Draw();
+            brushSprite = Instantiate(brushSpritePrefab, cam.ScreenToWorldPoint(mouse.position.ReadValue()), brushSpritePrefab.transform.rotation);
             drawing = true;
+            Draw();
         }
 
         //When mouse 0 is held
@@ -50,6 +51,7 @@ public class Masker : Drawer
         {
             //NewSpriteMask();
             drawing = false;
+            Destroy(brushSprite);
         }
 
         if (drawing) { return; }

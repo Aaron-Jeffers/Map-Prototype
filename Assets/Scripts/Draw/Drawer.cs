@@ -53,6 +53,10 @@ public class Drawer : MonoBehaviour
     protected GameObject brush;
     [Tooltip("The brush prefab")]
     public GameObject brushPrefab;
+    [Tooltip("The brush sprite")]
+    protected GameObject brushSprite;
+    [Tooltip("The brush sprite")]
+    public GameObject brushSpritePrefab;
     [Tooltip("List of all brush strokes instantiated and active")]
     public List<GameObject> brushesDrawn = new List<GameObject>();
     [Tooltip("Positions of all the nodes of the path")]
@@ -86,9 +90,9 @@ public class Drawer : MonoBehaviour
     {
         //Draw brush, instantiate
         //Add to list 
-        if (brushStrokesTaken >= maxBrushStroke) { return; }  
+        if (brushStrokesTaken >= maxBrushStroke) { UpdateBrushSprite(position, false); return; }  
         if (GetBrushesInRange(position, drawThreshold).Count > 0) { return; }
-        if (limitDrawing) { if (Vector2.Distance(position, player.transform.position) > (circle.transform.localScale.x / 2) - (brushRadius / 2)) { return; } }   //Limits drawing within radius of player circle
+        if (limitDrawing) { if (Vector2.Distance(position, player.transform.position) > (circle.transform.localScale.x / 2) - (brushRadius / 2)) { UpdateBrushSprite(position, false); return; } }   //Limits drawing within radius of player circle
         var mousePos = mouse.position.ReadValue();
         if (mousePos.x < 0 || mousePos.y < 0 || mousePos.x > Screen.width || mousePos.y > Screen.height) { return; }    //Prevents drawing if mouse is off screen
 
@@ -96,6 +100,13 @@ public class Drawer : MonoBehaviour
         brush.transform.localScale *= brushRadius;
         brushesDrawn.Add(brush);
         brushStrokesTaken++;
+        UpdateBrushSprite(position, true);
+    }
+
+    void UpdateBrushSprite(Vector2 position, bool show)
+    {
+        brushSprite.transform.position = position;
+        brushSprite.GetComponent<SpriteRenderer>().enabled = show;
     }
 
     /// <summary>
