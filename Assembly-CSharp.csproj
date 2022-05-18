@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\Shaders\Mask.shader" />
+    <None Include="Assets\Scripts\Shaders\Brush.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

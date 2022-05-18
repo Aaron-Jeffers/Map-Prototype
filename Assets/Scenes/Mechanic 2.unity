@@ -4275,9 +4275,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   limitDrawing: 0
   drawThreshold: 0.002
-  eraseRadius: 0.2
-  brushRadius: 0.2
-  circleRadius: 1
+  eraseRadius: 0.4
+  brushRadius: 0.4
+  circleRadius: 1.2
   maxBrushStroke: 5000
   brushStrokesTaken: 0
   player: {fileID: 404554663}
