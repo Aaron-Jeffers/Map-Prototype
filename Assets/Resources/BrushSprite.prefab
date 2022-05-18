@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6815935103142294294}
   - component: {fileID: 6853735577556068331}
+  - component: {fileID: 402576384734719729}
   - component: {fileID: 6378770163398305068}
   m_Layer: 0
   m_Name: BrushSprite
@@ -51,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e58dbb3c523709c41a7710edf2d98a5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,6 +84,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &402576384734719729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909485030581430736}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3e2575f98276a4aa928ec37929d170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderQueueNum: 3006
 --- !u!96 &6378770163398305068
 TrailRenderer:
   serializedVersion: 2

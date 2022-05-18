@@ -70,10 +70,14 @@
     <Compile Include="Assets\Scripts\Draw\Drawer.cs" />
     <Compile Include="Assets\Scripts\Animation\Fade_Scale.cs" />
     <Compile Include="Assets\Scripts\Player\Narration.cs" />
+    <Compile Include="Assets\Scripts\Draw\SetRenderQueue.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Scripts\Shaders\CircleMask.shader" />
     <None Include="Assets\Scripts\Shaders\Mask.shader" />
-    <None Include="Assets\Scripts\Shaders\Brush.shader" />
+    <None Include="Assets\Scripts\Shaders\BrushMask.shader" />
+    <None Include="Assets\Scripts\Shaders\BrushSprite.shader" />
+    <None Include="Assets\Scripts\Shaders\NewImageEffectShader.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

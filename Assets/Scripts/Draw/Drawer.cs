@@ -14,12 +14,12 @@ public class Drawer : MonoBehaviour
     /// Variables
     /// </summary>
     [Header("Variables")]
-    [Tooltip("Bool to determine maximum distance between brush instantiation and player")][SerializeField]
+    [Tooltip("Bool to determine if drawing is limited to within the radius of the circle around the player")][SerializeField]
     protected bool limitDrawing;
     [Tooltip("Minimum distance between each brush instantiation")][Range(0.001f, 10f)][SerializeField] 
     protected float drawThreshold;
-    [Tooltip("Maximum distance between brush instantiation and player")]
-    protected float drawThresholdToPlayer;
+    //[Tooltip("Maximum distance between brush instantiation and player")]
+    //protected float drawThresholdToPlayer;
     [Tooltip("Minimum distance between each mouse and brush stroke to erase")] [Range(0.1f, 10f)][SerializeField] 
     protected float eraseRadius;
     [Tooltip("Size of the brush")][Range(0.1f,10f)][SerializeField] 
@@ -80,6 +80,7 @@ public class Drawer : MonoBehaviour
     protected void UpdateCircle()
     {
         circle.transform.position = player.transform.position;
+        //circle.transform.localScale = new Vector3(circleRadius, circleRadius, circleRadius); 
     }
 
     /// <summary>
