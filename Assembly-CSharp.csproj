@@ -56,28 +56,27 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Interaction\Barrier.cs" />
-    <Compile Include="Assets\Scripts\Player\Controls.cs" />
-    <Compile Include="Assets\Scripts\Interaction\MouseDetection.cs" />
-    <Compile Include="Assets\Scripts\Draw\LineDrawer.cs" />
-    <Compile Include="Assets\Scripts\Interaction\Checkpoint.cs" />
-    <Compile Include="Assets\Scripts\Animation\Interpolation.cs" />
-    <Compile Include="Assets\Scripts\Animation\Fade.cs" />
-    <Compile Include="Assets\Scripts\Draw\ScreenCapture.cs" />
-    <Compile Include="Assets\Scripts\Draw\Scratcher.cs" />
-    <Compile Include="Assets\Scripts\Draw\Masker.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\Draw\Drawer.cs" />
-    <Compile Include="Assets\Scripts\Animation\Fade_Scale.cs" />
-    <Compile Include="Assets\Scripts\Player\Narration.cs" />
-    <Compile Include="Assets\Scripts\Draw\SetRenderQueue.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 2\SetRenderQueue.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 1\Barrier.cs" />
+    <Compile Include="Assets\Scripts\Common\Controls.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 1\MouseDetection.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 1\LineDrawer.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 1\Checkpoint.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 2\Interpolation.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 1\Fade.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 1\ScreenCapture.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 1\Scratcher.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 2\Masker.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 2\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 2\Drawer.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 1\Fade_Scale.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 2\Narration.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Scripts\Shaders\CircleMask.shader" />
-    <None Include="Assets\Scripts\Shaders\Mask.shader" />
-    <None Include="Assets\Scripts\Shaders\BrushMask.shader" />
-    <None Include="Assets\Scripts\Shaders\BrushSprite.shader" />
-    <None Include="Assets\Scripts\Shaders\NewImageEffectShader.shader" />
+    <None Include="Assets\Scripts\Mechanic 2\CircleMask.shader" />
+    <None Include="Assets\Scripts\Mechanic 2\Mask.shader" />
+    <None Include="Assets\Scripts\Mechanic 2\BrushMask.shader" />
+    <None Include="Assets\Scripts\Mechanic 2\BrushSprite.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
