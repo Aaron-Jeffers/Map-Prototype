@@ -71,6 +71,9 @@
     <Compile Include="Assets\Scripts\Mechanic 2\Drawer.cs" />
     <Compile Include="Assets\Scripts\Mechanic 1\Fade_Scale.cs" />
     <Compile Include="Assets\Scripts\Mechanic 2\Narration.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 3\StickerManager.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 3\ButtonBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 3\Highlights.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\Mechanic 2\CircleMask.shader" />

@@ -475,9 +475,11 @@ GameObject:
   m_Component:
   - component: {fileID: 800661980}
   - component: {fileID: 800661981}
+  - component: {fileID: 800661982}
+  - component: {fileID: 800661983}
   m_Layer: 0
   m_Name: Character_Highlight
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -547,6 +549,84 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &800661982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800661979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aed319e2e4b6624b8d42c8f94b3eb93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &800661983
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800661979}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.6
+--- !u!1 &1260417600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1260417602}
+  - component: {fileID: 1260417601}
+  m_Layer: 0
+  m_Name: Stickers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1260417601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260417600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ede18913f6507543ac80f0e971d20b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sticker: {fileID: 0}
+  stickerTag: 
+  permaStickers: []
+  cityPrefabBW: {fileID: 0}
+  cityPrefabCol: {fileID: 0}
+  characterPrefabBW: {fileID: 0}
+  characterPrefabCol: {fileID: 0}
+--- !u!4 &1260417602
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260417600}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1486872288
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,9 +671,10 @@ GameObject:
   - component: {fileID: 1551824155}
   - component: {fileID: 1551824154}
   - component: {fileID: 1551824156}
+  - component: {fileID: 1551824157}
   m_Layer: 5
   m_Name: City Button
-  m_TagString: Untagged
+  m_TagString: City
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -680,7 +761,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.254717, g: 0.24150054, b: 0.24150054, a: 0.49411765}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -698,19 +779,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1551824154}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &1551824157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551824152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c977e99e0a53444f91e5387783b276f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1557932586
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,9 +834,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1621286760}
   - component: {fileID: 1621286761}
+  - component: {fileID: 1621286762}
+  - component: {fileID: 1621286763}
   m_Layer: 0
   m_Name: City_Highlight
-  m_TagString: Untagged
+  m_TagString: City
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -825,6 +908,60 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1621286762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621286759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aed319e2e4b6624b8d42c8f94b3eb93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!60 &1621286763
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621286759}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.94, y: 1.49}
+    newSize: {x: 0.94, y: 1.49}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.38799238, y: -0.03733313}
+      - {x: 0.31389785, y: 0.011591196}
+      - {x: 0.32414162, y: 0.33827442}
+      - {x: 0.22, y: 0.575}
+      - {x: 0.06069023, y: 0.61267257}
+      - {x: -0.089999996, y: 0.615}
+      - {x: -0.35, y: 0.345}
+      - {x: -0.2894864, y: 0.23732603}
+      - {x: -0.2792821, y: 0.016016722}
+      - {x: -0.34073782, y: -0.03080833}
+      - {x: -0.35, y: -0.60499996}
+      - {x: -0.32999998, y: -0.625}
+      - {x: -0.031203728, y: -0.6110352}
+      - {x: -0.01722598, y: -0.22016704}
+      - {x: 0.047672793, y: -0.21933544}
+      - {x: 0.06, y: -0.625}
+      - {x: 0.38, y: -0.625}
 --- !u!1 &1651703014
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,9 +974,10 @@ GameObject:
   - component: {fileID: 1651703018}
   - component: {fileID: 1651703017}
   - component: {fileID: 1651703016}
+  - component: {fileID: 1651703019}
   m_Layer: 5
   m_Name: Character Button
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -888,7 +1026,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.25490198, g: 0.24313726, b: 0.24313726, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -957,6 +1095,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1651703014}
   m_CullTransparentMesh: 1
+--- !u!114 &1651703019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651703014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c977e99e0a53444f91e5387783b276f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1752322431
 GameObject:
   m_ObjectHideFlags: 0
