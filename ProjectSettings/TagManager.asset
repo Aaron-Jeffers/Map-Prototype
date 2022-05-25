@@ -9,6 +9,7 @@ TagManager:
   - CheckPoint
   - City
   - Character
+  - Highlight
   layers:
   - Default
   - TransparentFX

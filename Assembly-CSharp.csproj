@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Mechanic 2\SetRenderQueue.cs" />
     <Compile Include="Assets\Scripts\Mechanic 1\Barrier.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 3\ButtonBehaviour.cs" />
     <Compile Include="Assets\Scripts\Common\Controls.cs" />
     <Compile Include="Assets\Scripts\Mechanic 1\MouseDetection.cs" />
     <Compile Include="Assets\Scripts\Mechanic 1\LineDrawer.cs" />
@@ -65,15 +66,16 @@
     <Compile Include="Assets\Scripts\Mechanic 2\Interpolation.cs" />
     <Compile Include="Assets\Scripts\Mechanic 1\Fade.cs" />
     <Compile Include="Assets\Scripts\Mechanic 1\ScreenCapture.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 3\StickerManager.cs" />
     <Compile Include="Assets\Scripts\Mechanic 1\Scratcher.cs" />
     <Compile Include="Assets\Scripts\Mechanic 2\Masker.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 3\Highlights.cs" />
     <Compile Include="Assets\Scripts\Mechanic 2\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Mechanic 2\Drawer.cs" />
     <Compile Include="Assets\Scripts\Mechanic 1\Fade_Scale.cs" />
     <Compile Include="Assets\Scripts\Mechanic 2\Narration.cs" />
-    <Compile Include="Assets\Scripts\Mechanic 3\StickerManager.cs" />
-    <Compile Include="Assets\Scripts\Mechanic 3\ButtonBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Mechanic 3\Highlights.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 3\SOSticker.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 3\Sticker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\Mechanic 2\CircleMask.shader" />

@@ -20,8 +20,8 @@ public class StickerManager : MonoBehaviour
     }
     void LoadResources()
     {
-        cityPrefabBW = Resources.Load<GameObject>("CitySticker_BaW").gameObject;
-        cityPrefabCol = Resources.Load<GameObject>("CitySticker_Coloured").gameObject;
+        //cityPrefabBW = Resources.Load<GameObject>("CitySticker_BaW").gameObject;
+        //cityPrefabCol = Resources.Load<GameObject>("CitySticker_Coloured").gameObject;
         characterPrefabBW = Resources.Load<GameObject>("CharacterSticker_BaW").gameObject;
         characterPrefabCol = Resources.Load<GameObject>("CharacterSticker_Coloured").gameObject;
     }
@@ -99,19 +99,7 @@ public class StickerManager : MonoBehaviour
         Destroy(obj);
         sticker = null;
     }
-    //GameObject GetNearestHighlightObj()
-    //{
-    //    float closestDist2Mouse = Mathf.Infinity;
-
-    //    foreach(Highlights h in highlights)
-    //    {
-    //        if(Vector2.Distance(h.GetPosition(), Mouse2WorldPos()) < closestDist2Mouse)
-    //        {
-    //            return h.gameObject;
-    //        }
-    //    }
-    //    return null;
-    //}
+    
     Vector3 Mouse2WorldPos()
     {
         return Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - new Vector3(0, 0, Camera.main.transform.position.z);
