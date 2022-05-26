@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be088c548fc676e45bf83ec72260c759, type: 3}
   m_Name: CharacterSTickerSO
   m_EditorClassIdentifier: 
-  name: Character Sticker
-  tag: Character
-  buttonSprite: {fileID: 21300000, guid: 0beee4dfe48477a408cfc37bd5252bdd, type: 3}
-  highlight: {fileID: 1983372471662534606, guid: a7ad0a886a8b0164a88a4bd3088d5135, type: 3}
-  highlightTag: Highlight
-  dragSprite: {fileID: 446835358191868700, guid: d24f8035a3a40ab4fac8078109d5e783, type: 3}
-  placeSprite: {fileID: 3630597030335003981, guid: bc789b10a1e1e504eb1a1cd9e645d415, type: 3}
+  _name: Character Sticker
+  _tag: Character
+  _buttonSprite: {fileID: 21300000, guid: 0beee4dfe48477a408cfc37bd5252bdd, type: 3}
+  _highlight: {fileID: 1983372471662534606, guid: a7ad0a886a8b0164a88a4bd3088d5135, type: 3}
+  _highlightTag: Highlight
+  _dragSprite: {fileID: 446835358191868700, guid: d24f8035a3a40ab4fac8078109d5e783, type: 3}
+  _placeSprite: {fileID: 3630597030335003981, guid: bc789b10a1e1e504eb1a1cd9e645d415, type: 3}
+  _audioClip: {fileID: 8300000, guid: c766fd70a6fedf049a7fff6668999c9d, type: 3}

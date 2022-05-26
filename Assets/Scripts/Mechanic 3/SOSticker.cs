@@ -3,15 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[ExecuteInEditMode]
 [CreateAssetMenu(fileName = "New Sticker", menuName = "Sticker")]
 public class SOSticker : ScriptableObject
 {
-    public new string name;
-    public string tag;
+    [SerializeField]
+    string _name;
+    [SerializeField]
+    string _tag;
     //public GameObject button;
-    public Sprite buttonSprite;
-    public GameObject highlight;
-    public string highlightTag;
-    public GameObject dragSprite;
-    public GameObject placeSprite;
+    [SerializeField]
+    Sprite _buttonSprite;
+    [SerializeField]
+    GameObject _highlight;
+    [SerializeField]
+    string _highlightTag;
+    [SerializeField]
+    GameObject _dragSprite;
+    [SerializeField]
+    GameObject _placeSprite;
+    [SerializeField]
+    AudioClip _audioClip;
+
+    public string NewName => _name;
+    public  string NewTag => _tag;
+    public Sprite ButtonSprite => _buttonSprite;
+    public GameObject Highlight => _highlight;
+    public string HighlightTag => _highlightTag;
+    public GameObject DragSprite => _dragSprite;
+    public GameObject PlaceSprite => _placeSprite;
+    public AudioClip Clip => _audioClip;
 }

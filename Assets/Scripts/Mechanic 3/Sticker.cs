@@ -1,42 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class Sticker : MonoBehaviour
 {
-    public SOSticker soSticker;
+    //[SerializeField]
+    SOSticker soSticker;
+    StickerManager stickerManager;
+    public SOSticker SetStickerScriptableObject
+    {
+        set { soSticker = value; }
+    }
 
     Image buttonSprite;
+    Button button;
     GameObject highlight;
-    public string highlightTag;
+    string highlightTag;
     GameObject dragSprite;
     GameObject placeSprite;
-    GameObject activeObject;
+    AudioSource audioSource;
 
     bool buttonPressed;
     bool done;
 
     private void Start()
     {
-        Initialise();
+        InitialiseRuntime();
     }
 
+    private void OnValidate()
+    {
+        InitialiseEditor();
+    }
     private void Update()
     {
-        if(done) { return; }
-        if (!buttonPressed) { return; }
+        if (done && !audioSource.isPlaying) { stickerManager.CanContinue = true; }
+        if(done || !buttonPressed) { return; }
 
         MoveObject(dragSprite);
 
         if (!Mouse.current.leftButton.wasReleasedThisFrame) { return; }
-
+        
         if (Raycast())
         {
             SetObjectActive(placeSprite, true);
             MoveObject(placeSprite);
             done = true;
+            button.interactable = false;
         }
 
         SetObjectActive(highlight, false);
@@ -62,24 +72,37 @@ public class Sticker : MonoBehaviour
         SetObjectActive(dragSprite, true);
     }
 
-    void Initialise()
+    void InitialiseEditor()
     {
-        name = soSticker.name;
-        tag = soSticker.tag;
-        highlightTag = soSticker.highlightTag;
+        if (!soSticker) { return; }
+        name = soSticker.NewName;
+    }
 
+    void InitialiseRuntime()
+    {
+        stickerManager = GetComponentInParent<StickerManager>();
+
+        tag = soSticker.NewTag;
+        highlightTag = soSticker.HighlightTag;
+
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = soSticker.Clip;
+
+        button = GetComponent<Button>();
         buttonSprite = GetComponent<Image>();
-        buttonSprite.sprite = soSticker.buttonSprite;
-        
-        highlight = Instantiate(soSticker.highlight);
-        dragSprite = Instantiate(soSticker.dragSprite);
-        placeSprite = Instantiate(soSticker.placeSprite);
+        buttonSprite.sprite = soSticker.ButtonSprite;
+
+        highlight = Instantiate(soSticker.Highlight);
+        dragSprite = Instantiate(soSticker.DragSprite);
+        placeSprite = Instantiate(soSticker.PlaceSprite);
 
         highlight.tag = highlightTag;
         
         SetObjectActive(highlight, false);
         SetObjectActive(dragSprite, false);
         SetObjectActive(placeSprite, false);
+
+        audioSource.Play();
     }
 
     void SetObjectActive(GameObject obj, bool active)

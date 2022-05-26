@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be088c548fc676e45bf83ec72260c759, type: 3}
   m_Name: CityStickerSO
   m_EditorClassIdentifier: 
-  name: City Sticker
-  tag: City
-  buttonSprite: {fileID: 21300000, guid: 42b3a75076bba9d4eaaed9af92fb4205, type: 3}
-  highlight: {fileID: 1223576456654049398, guid: fed4689906463d5419d61c4b5a29db3a, type: 3}
-  highlightTag: Highlight
-  dragSprite: {fileID: 8078759085984220598, guid: 26504442fb840594bb283312fc86019f, type: 3}
-  placeSprite: {fileID: 6920911180147472423, guid: c46241a75ff65914e86efe7f4ea641b0, type: 3}
+  _name: City Sticker
+  _tag: City
+  _buttonSprite: {fileID: 21300000, guid: 42b3a75076bba9d4eaaed9af92fb4205, type: 3}
+  _highlight: {fileID: 1223576456654049398, guid: fed4689906463d5419d61c4b5a29db3a, type: 3}
+  _highlightTag: Highlight
+  _dragSprite: {fileID: 8078759085984220598, guid: 26504442fb840594bb283312fc86019f, type: 3}
+  _placeSprite: {fileID: 6920911180147472423, guid: c46241a75ff65914e86efe7f4ea641b0, type: 3}
+  _audioClip: {fileID: 8300000, guid: 79bfae645a9260444889342b94a2a3f9, type: 3}
