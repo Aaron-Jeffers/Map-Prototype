@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{750F3920-8294-B5E6-14F2-3273E6FD50D4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -76,6 +77,9 @@
     <Compile Include="Assets\Scripts\Mechanic 2\Drawer.cs" />
     <Compile Include="Assets\Scripts\Mechanic 1\Fade_Scale.cs" />
     <Compile Include="Assets\Scripts\Mechanic 2\Narration.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 4\InkPot.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 4\Pipette.cs" />
+    <Compile Include="Assets\Scripts\Mechanic 4\InkDrop.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\Mechanic 2\CircleMask.shader" />
