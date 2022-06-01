@@ -1,4 +1,4 @@
-Shader "Sprites/Default"
+Shader "Custom/BrushSprite"
 {
 	Properties
 	{

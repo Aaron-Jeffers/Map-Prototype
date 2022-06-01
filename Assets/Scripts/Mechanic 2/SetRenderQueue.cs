@@ -21,6 +21,7 @@ public class SetRenderQueue : MonoBehaviour
         for (int i = 0; i < renderers.Count; i++)
         {
             renderers[i].material.renderQueue = renderQueueNum;
+            renderers[i].material.SetFloat("MyScrMode", 2);
         }
     }
 }

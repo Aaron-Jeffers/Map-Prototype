@@ -10,6 +10,7 @@ TagManager:
   - City
   - Character
   - Highlight
+  - Drop
   layers:
   - Default
   - TransparentFX
