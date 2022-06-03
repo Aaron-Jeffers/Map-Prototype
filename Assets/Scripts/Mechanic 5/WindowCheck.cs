@@ -23,11 +23,6 @@ public class WindowCheck : MonoBehaviour
     private void Start()
     {
         spriteCorners = GetSpriteCorners(GetComponent<SpriteRenderer>());
-        //Debug.Log(spriteCorners[0]);
-        //Debug.Log(spriteCorners[1]);
-        //Debug.Log(spriteCorners[2]);
-        //Debug.Log(spriteCorners[3]);
-        //Debug.Log("Width = " + (spriteCorners[0].x - spriteCorners[3].x) + ", Height = " + (spriteCorners[1].y - spriteCorners[0].y));
     }
     private void Update()
     {
@@ -49,11 +44,16 @@ public class WindowCheck : MonoBehaviour
         if (!check) { return false; }
         if(Raycast("Drop") > raycastDensity.x * raycastDensity.y * checkThreshold)
         {
-            fill.SetActive(true);
             check = checkWindowAfterFill;
+            EnableFill(true);
             return true;
         }
         return false;
+    }
+
+    public void EnableFill(bool value)
+    {
+        fill.SetActive(true);
     }
 
     /// <summary>
@@ -67,24 +67,16 @@ public class WindowCheck : MonoBehaviour
         for (int i = 0; i < targets.Count; i++)
         {
             Ray ray = Camera.main.ScreenPointToRay(Camera.main.WorldToScreenPoint(targets[i]));
-            var hit = Physics2D.GetRayIntersection(ray, 100f);
-
-            if (!hit) { return hits; }
-            if (hit.collider.tag == tag2Check)
+            var hit = Physics2D.GetRayIntersectionAll(ray, 100f);
+            
+            foreach(RaycastHit2D newHit in hit)
             {
-                hits++;
+                if (newHit.collider.tag == tag2Check)
+                {
+                    hits++;
+                    break;
+                }
             }
-
-            //Ray ray = Camera.main.ScreenPointToRay(Camera.main.WorldToScreenPoint(targets[i]));
-            //RaycastHit2D hit;
-
-            //if (Physics.Raycast(ray, out hit))
-            //{
-            //    if (hit.collider.tag == tag2Check)
-            //    {
-            //        hits++;
-            //    }
-            //}
         }
 
         return hits;

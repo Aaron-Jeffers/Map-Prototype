@@ -10,7 +10,6 @@ public class Fill2D : MonoBehaviour
     bool scale;
     private void OnEnable()
     {
-        Debug.Log("Test");
         scale = true;
         originalScale = transform.localScale;
         transform.localScale *= scaleFactor;
