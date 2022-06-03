@@ -35,7 +35,7 @@ public class WindowCheck : MonoBehaviour
         {
             for (int i = 0; i < RaycastPositions().Count; i++)
             {
-               //Instantiate(dot, RaycastPositions()[i], Quaternion.identity);
+               Instantiate(dot, RaycastPositions()[i], Quaternion.identity);
             }
             //Debug.Log(GetMousePos());
         }
@@ -67,15 +67,24 @@ public class WindowCheck : MonoBehaviour
         for (int i = 0; i < targets.Count; i++)
         {
             Ray ray = Camera.main.ScreenPointToRay(Camera.main.WorldToScreenPoint(targets[i]));
-            RaycastHit hit;
+            var hit = Physics2D.GetRayIntersection(ray, 100f);
 
-            if (Physics.Raycast(ray, out hit))
+            if (!hit) { return hits; }
+            if (hit.collider.tag == tag2Check)
             {
-                if (hit.collider.tag == tag2Check)
-                {
-                    hits++;
-                }
+                hits++;
             }
+
+            //Ray ray = Camera.main.ScreenPointToRay(Camera.main.WorldToScreenPoint(targets[i]));
+            //RaycastHit2D hit;
+
+            //if (Physics.Raycast(ray, out hit))
+            //{
+            //    if (hit.collider.tag == tag2Check)
+            //    {
+            //        hits++;
+            //    }
+            //}
         }
 
         return hits;

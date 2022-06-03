@@ -5,7 +5,7 @@ using UnityEngine;
 public class SetRenderQueue : MonoBehaviour
 {
     public int renderQueueNum;
-    void Start()
+    void Awake()
     {
         List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>();
         spriteRenderers.AddRange(GetComponentsInChildren<SpriteRenderer>());

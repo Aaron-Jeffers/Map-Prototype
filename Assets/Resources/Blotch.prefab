@@ -95,7 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06eb3f31a8bea8c4fa99c3348a7fea6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startFadeTime: 5
+  timer: 0
+  defaultStartFadeTime: 0.2
+  delayedStartFadeTime: 5
   fadeRate: 0.03
   fadeLimit: 0.3
 --- !u!64 &-4150417267116649039

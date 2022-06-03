@@ -37,12 +37,14 @@ public class Drop : MonoBehaviour
         }
         if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
-            if (!Raycast().collider.GetComponent<InkPot>() || !Raycast())
+            foreach(RaycastHit2D ray in Raycast())
             {
-                return;
+                if (ray.collider.GetComponent<InkPot>()) 
+                {
+                    numberOfInkDrops = 0;
+                    timer = 0;
+                }
             }
-            numberOfInkDrops = 0;
-            timer = 0;
         }
 
         if (numberOfInkDrops >= maxNumberOfInkDrops) { return; }
@@ -52,10 +54,10 @@ public class Drop : MonoBehaviour
         }
     }
 
-    public RaycastHit2D Raycast()
+    public RaycastHit2D[] Raycast()
     {
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        var hit = Physics2D.GetRayIntersection(ray, 100f);
+        var hit = Physics2D.GetRayIntersectionAll(ray, 100f);
         return hit;
     }
 
@@ -71,6 +73,15 @@ public class Drop : MonoBehaviour
         timer = 0;
         numberOfInkDrops++;
         CallWindowCheck();
+        foreach(RaycastHit2D ray in Raycast())
+        {
+            if (ray.collider.CompareTag("Outline"))
+            {
+                newInkDrop.GetComponent<Blotch>().SwitchTime = true;
+                return;
+            }
+        }
+        
     }
 
     /// <summary>

@@ -1,22 +1,26 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Blotch : MonoBehaviour
 {
-    float timer;
-    [SerializeField] float startFadeTime;
+    public float timer;
+    [SerializeField] float defaultStartFadeTime;
+    [SerializeField] float delayedStartFadeTime;
     [SerializeField] float fadeRate;
     [SerializeField] float fadeLimit;
+    bool switchTime;
+
+    public bool SwitchTime { set { switchTime = value; } }
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
-        if(timer >= startFadeTime)
+        if(timer >= (switchTime ? delayedStartFadeTime : defaultStartFadeTime))
         {
-            transform.position += new Vector3(0, 0, fadeRate) * Time.deltaTime;
-            if(transform.position.z >= fadeLimit)
+            float newScale = fadeRate * Time.deltaTime;
+            transform.localScale = new Vector2(transform.localScale.x - newScale, transform.localScale.y - newScale);
+            if (transform.localScale.x <= 0)
             {
                 Destroy(gameObject);
             }

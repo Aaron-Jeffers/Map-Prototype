@@ -11,6 +11,7 @@ TagManager:
   - Character
   - Highlight
   - Drop
+  - Outline
   layers:
   - Default
   - TransparentFX
