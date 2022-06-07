@@ -12,6 +12,7 @@ TagManager:
   - Highlight
   - Drop
   - Outline
+  - Choice
   layers:
   - Default
   - TransparentFX
