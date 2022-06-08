@@ -14,25 +14,25 @@ public class Drop : MonoBehaviour
     [Tooltip("Determines wether or not to delete drops after window check returns true and window is filled in")]
     [SerializeField] bool clearOnWindowCheck;
 
-    [Tooltip("Game object to instantiate")][SerializeField] GameObject drop;
-    [SerializeField] List<GameObject> drops = new List<GameObject>();
+    [Tooltip("List of drop game objects to instantiate")][SerializeField] List<GameObject> drop;
+    List<GameObject> drops = new List<GameObject>();
     [SerializeField] Vector3 offsetFromMousePosition;
     [SerializeField][Tooltip("Drops per second")] float inkDropFrequency;
     [SerializeField] Slider inkPotSlider;
     [SerializeField] Slider pipetteSlider;
     [SerializeField] int maxNumberOfInkDrops;
-    [SerializeField] int numberOfInkDrops;
-    [SerializeField] int inkPotLevel;
-    [SerializeField] int pipetteLevel;
+    int numberOfInkDrops;
+    int inkPotLevel;
+    int pipetteLevel;
     [SerializeField] [Range(0, 1)] float finalInkDropScaleRatio;
-    [SerializeField] [Range(0, 1)] [Tooltip("Scaling ratio between first and last ink drop instantiated")] float spawnRatio;
     GameObject dropHolder;
-
     float timer;
+    Vector2 lastMousePos;
+
     private void Start()
     {
         SetWindowChecks();
-        transform.position = GetMouseVariables()[0] + offsetFromMousePosition;
+        transform.position = GetMousePos() + offsetFromMousePosition;
         pipetteSlider.maxValue = maxNumberOfInkDrops;
         pipetteLevel = 0;
         pipetteSlider.value = pipetteLevel;
@@ -40,10 +40,11 @@ public class Drop : MonoBehaviour
         inkPotLevel = maxNumberOfInkDrops;
         inkPotSlider.value = inkPotLevel;
         dropHolder = GameObject.FindGameObjectWithTag("DropHolder");
+        lastMousePos = GetMousePos();
     }
     private void Update()
     {
-        transform.position = GetMouseVariables()[0] + offsetFromMousePosition;
+        transform.position = GetMousePos() + offsetFromMousePosition;
         timer += Time.deltaTime;
 
         if (Mouse.current.leftButton.wasReleasedThisFrame)
@@ -61,7 +62,7 @@ public class Drop : MonoBehaviour
                 }
             }
         }
-
+        
         if (pipetteLevel <= 0) { return; }
         if (timer >= 1 / inkDropFrequency)
         {
@@ -81,7 +82,9 @@ public class Drop : MonoBehaviour
     /// </summary>
     void InstantiateDrop()
     {
-        GameObject newInkDrop = Instantiate(drop, GetMouseVariables()[0], drop.transform.rotation, dropHolder.transform);
+        int i = GetMouseDirection();
+        GameObject newInkDrop = Instantiate(drop[i], GetMousePos(), drop[i].transform.rotation, dropHolder.transform);
+
         var scale = newInkDrop.transform.localScale;
         _ = (pipetteLevel == 1) ? scale *= finalInkDropScaleRatio : scale;
         newInkDrop.transform.localScale = new Vector3(scale.x, scale.y, scale.z);
@@ -130,18 +133,61 @@ public class Drop : MonoBehaviour
     /// Returns the mouse position in world space with the z-axis zeroed relative to the camera's z-axis position.
     /// </summary>
     /// <returns></returns>
-    Vector3[] GetMouseVariables()
+    Vector3 GetMousePos()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - new Vector3(0, 0, Camera.main.transform.position.z);
 
-        Vector3 mouseDirection =  Vector3.zero;
-
-        Vector3 mouseVelocity = Vector3.zero;
-
-        Vector3[] mouseVariables = { mousePos, mouseDirection, mouseVelocity };
-        return mouseVariables;
+        return mousePos;
     }
 
+    int GetMouseDirection()
+    {
+        Vector2 newMousePos = GetMousePos();
+
+        if(newMousePos == lastMousePos)
+        {
+            return 0;
+        }
+
+        float mouseDirection = Mathf.Atan2(newMousePos.y - lastMousePos.y,newMousePos.x-lastMousePos.x) * Mathf.Rad2Deg;
+
+        lastMousePos = newMousePos;
+
+        if (mouseDirection > -22.5 && mouseDirection <= 22.5)
+        {
+            return 1;
+        }
+        if (mouseDirection > 22.5 && mouseDirection <= 67.5)
+        {
+            return 2;
+        }
+        if (mouseDirection > 67.5 && mouseDirection <= 112.5)
+        {
+            return 3;
+        }
+        if (mouseDirection > 112.5 && mouseDirection <= 157.5)
+        {
+            return 4;
+        }
+        if (mouseDirection > 157.5 || mouseDirection <= -157.5)
+        {
+            return 5;
+        }
+        if (mouseDirection > -157.5 && mouseDirection <= -112.5)
+        {
+            return 6;
+        }
+        if (mouseDirection > -112.5 && mouseDirection <= -67.5)
+        {
+            return 7;
+        }
+        if (mouseDirection > -67.5 && mouseDirection <= -22.5)
+        {
+            return 8;
+        }
+
+        return -1;
+    }
     public void ReturnInk(GameObject obj)
     {
         if (!drops.Contains(obj))  return; 

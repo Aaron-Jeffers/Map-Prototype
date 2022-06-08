@@ -69,6 +69,7 @@ public class ChoiceManager : MonoBehaviour
             text[i].enabled = value;
         }
         dropScript.ResetInk();
+        dropScript.SetWindowChecks();
     }
     public void FillAreaComplete(bool enableText)
     {

@@ -466,41 +466,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 2
   m_SpriteSortPoint: 0
---- !u!1 &339321691
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 339321692}
-  m_Layer: 5
-  m_Name: Choices
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &339321692
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339321691}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1493983771}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &381330117
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,18 +892,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windowChecks: []
   clearOnWindowCheck: 1
-  drop: {fileID: 7689914764129327787, guid: 5c8d169aaad174c469b45f1d86f1e297, type: 3}
-  drops: []
+  drop:
+  - {fileID: 7689914764129327787, guid: 5c8d169aaad174c469b45f1d86f1e297, type: 3}
+  - {fileID: 7231878587826924983, guid: d2ed9e0778545c541ac869074a0ef407, type: 3}
+  - {fileID: 1839649183487279292, guid: 0cfb5a805b1e83847a5047e06bc99ceb, type: 3}
+  - {fileID: 1492646506819709654, guid: 82092a43fdc945842a85e5adb41fcf8a, type: 3}
+  - {fileID: 4208923888954285381, guid: 3c2e85bb603131a49ac22efd3345a0a3, type: 3}
+  - {fileID: 7065160428106969966, guid: 7a07c07abe551674985ace11135bb350, type: 3}
+  - {fileID: 5325579081707070300, guid: 8a69e901f7646b54b9dc6fe84661dc0f, type: 3}
+  - {fileID: 7396025754569029296, guid: 24d025bd75babb34fbe0b8b019c1de54, type: 3}
+  - {fileID: 42333535157458610, guid: f57faa7f57704c346957b3d349a54a6c, type: 3}
   offsetFromMousePosition: {x: 0.6, y: 0.6, z: 0}
   inkDropFrequency: 2
   inkPotSlider: {fileID: 1672297803}
   pipetteSlider: {fileID: 671702206}
   maxNumberOfInkDrops: 20
-  numberOfInkDrops: 0
-  inkPotLevel: 0
-  pipetteLevel: 0
   finalInkDropScaleRatio: 0.4
-  spawnRatio: 0
 --- !u!1 &799844118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1738,7 +1707,6 @@ RectTransform:
   m_Children:
   - {fileID: 565619185}
   - {fileID: 381330118}
-  - {fileID: 339321692}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
