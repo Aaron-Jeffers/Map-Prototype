@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de78c4cfd5e0192418e436fd5d37f5a2, type: 3}
+  m_Name: HolidayHouse
+  m_EditorClassIdentifier: 
+  _name: Holiday Home
+  _tag: Choice
+  _fillArea: {fileID: 7732414932231773371, guid: 860b37eb21001b8419af65a32d19b90e, type: 3}
+  _choiceAreas:
+  - {fileID: 7732414932231773371, guid: 860b37eb21001b8419af65a32d19b90e, type: 3}
+  - {fileID: 6053158453978138669, guid: ab61929abe10fb246b2606b1b4eaa80e, type: 3}
+  - {fileID: 2673193564939965225, guid: 6c1c9d15187224d41a882f77e8ff475b, type: 3}
+  _questionText: Where should they go?
+  _choiceText:
+  - Should they stay?
+  - Should they go west?
+  - Should they go east?
+  _consequenceText:
+  - Staying here would have been a mistake
+  - Going here would have brought them to war
+  - Here was the best choice
+  _initialClip: {fileID: 8300000, guid: 05cae63b1d05e2a40a4137b92705c008, type: 3}
+  _madeChoiceClip: {fileID: 8300000, guid: 7d16379d62c625241aa810edaf0935ce, type: 3}

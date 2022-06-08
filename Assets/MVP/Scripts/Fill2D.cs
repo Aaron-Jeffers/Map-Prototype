@@ -22,6 +22,7 @@ public class Fill2D : MonoBehaviour
 
         if(transform.localScale.x >= originalScale.x)
         {
+            transform.localScale = originalScale;
             scale = false;
         }
     }

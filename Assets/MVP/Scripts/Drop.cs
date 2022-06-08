@@ -26,23 +26,24 @@ public class Drop : MonoBehaviour
     [SerializeField] int pipetteLevel;
     [SerializeField] [Range(0, 1)] float finalInkDropScaleRatio;
     [SerializeField] [Range(0, 1)] [Tooltip("Scaling ratio between first and last ink drop instantiated")] float spawnRatio;
+    GameObject dropHolder;
 
     float timer;
     private void Start()
     {
-        WindowCheck[] windows = FindObjectsOfType<WindowCheck>();
-        windowChecks.AddRange(windows);
-        transform.position = GetMousePos() + offsetFromMousePosition;
+        SetWindowChecks();
+        transform.position = GetMouseVariables()[0] + offsetFromMousePosition;
         pipetteSlider.maxValue = maxNumberOfInkDrops;
         pipetteLevel = 0;
         pipetteSlider.value = pipetteLevel;
         inkPotSlider.maxValue = maxNumberOfInkDrops;
         inkPotLevel = maxNumberOfInkDrops;
         inkPotSlider.value = inkPotLevel;
+        dropHolder = GameObject.FindGameObjectWithTag("DropHolder");
     }
     private void Update()
     {
-        transform.position = GetMousePos() + offsetFromMousePosition;
+        transform.position = GetMouseVariables()[0] + offsetFromMousePosition;
         timer += Time.deltaTime;
 
         if (Mouse.current.leftButton.wasReleasedThisFrame)
@@ -80,7 +81,7 @@ public class Drop : MonoBehaviour
     /// </summary>
     void InstantiateDrop()
     {
-        GameObject newInkDrop = Instantiate(drop, GetMousePos(), drop.transform.rotation);
+        GameObject newInkDrop = Instantiate(drop, GetMouseVariables()[0], drop.transform.rotation, dropHolder.transform);
         var scale = newInkDrop.transform.localScale;
         _ = (pipetteLevel == 1) ? scale *= finalInkDropScaleRatio : scale;
         newInkDrop.transform.localScale = new Vector3(scale.x, scale.y, scale.z);
@@ -129,13 +130,21 @@ public class Drop : MonoBehaviour
     /// Returns the mouse position in world space with the z-axis zeroed relative to the camera's z-axis position.
     /// </summary>
     /// <returns></returns>
-    Vector3 GetMousePos()
+    Vector3[] GetMouseVariables()
     {
-        return Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - new Vector3(0, 0, Camera.main.transform.position.z);
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - new Vector3(0, 0, Camera.main.transform.position.z);
+
+        Vector3 mouseDirection =  Vector3.zero;
+
+        Vector3 mouseVelocity = Vector3.zero;
+
+        Vector3[] mouseVariables = { mousePos, mouseDirection, mouseVelocity };
+        return mouseVariables;
     }
 
     public void ReturnInk(GameObject obj)
     {
+        if (!drops.Contains(obj))  return; 
         inkPotLevel++;
         inkPotSlider.value = inkPotLevel;
         drops.Remove(obj);
@@ -147,5 +156,25 @@ public class Drop : MonoBehaviour
             drops.RemoveAt(drops.IndexOf(obj[i]));
             //Destroy(obj[i]);
         }
+    }
+
+    public void ResetInk()
+    {
+        pipetteLevel = 0;
+        pipetteSlider.value = pipetteLevel;
+        inkPotLevel = maxNumberOfInkDrops;
+        inkPotSlider.value = inkPotLevel;
+        for(int i = 0; i < drops.Count; i++)
+        {
+            Destroy(drops[i]);
+        }
+        drops.Clear();
+    }
+
+    public void SetWindowChecks()
+    {
+        windowChecks.Clear();
+        WindowCheck[] windows = FindObjectsOfType<WindowCheck>();
+        windowChecks.AddRange(windows);
     }
 }

@@ -1,6 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.InputSystem;
 
 public class ChoiceManager : MonoBehaviour
 {
@@ -11,11 +13,19 @@ public class ChoiceManager : MonoBehaviour
     List<Choice> choices = new List<Choice>();
     int index;
     bool canContinue;
-
+    [SerializeField]
+    List<TextMeshProUGUI> text;
+    Drop dropScript;
+    
     public bool CanContinue
     {
         set { canContinue = value; }
     }
+    public void SetText(string newText, int i)
+    {
+        text[i].text = newText;
+    }
+
 
     private void Awake()
     {
@@ -30,20 +40,40 @@ public class ChoiceManager : MonoBehaviour
 
         Choice[] newList = GetComponentsInChildren<Choice>();
         choices.AddRange(newList);
-
+        choices[0].Enable();
         for (int i = 1; i < choices.Count; i++)
         {
             choices[i].gameObject.SetActive(false);
         }
+        
+        dropScript = FindObjectOfType<Drop>().GetComponent<Drop>();
+        EnableText(false);
     }
 
     public void UpdateActiveChoice()
     {
-        if (!canContinue || index == choiceScriptableObjects.Count) { return; }
+        if (!canContinue || index >= choiceScriptableObjects.Count) { return; }
 
         choices[index].gameObject.SetActive(false);
         index++;
         choices[index].gameObject.SetActive(true);
+        choices[index].Enable();
         canContinue = false;
+        EnableText(false);
+        dropScript.SetWindowChecks();
+    }
+    void EnableText(bool value)
+    {
+        for (int i = 0; i < text.Count; i++)
+        {
+            text[i].enabled = value;
+        }
+        dropScript.ResetInk();
+    }
+    public void FillAreaComplete(bool enableText)
+    {
+        EnableText(enableText);
+        dropScript.ResetInk();
+        dropScript.SetWindowChecks();
     }
 }

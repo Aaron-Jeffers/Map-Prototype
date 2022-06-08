@@ -5,9 +5,16 @@ using UnityEngine.InputSystem;
 
 public class InkPot : MonoBehaviour
 {
-    // Update is called once per frame
-    void Update()
+    Camera camera;
+    Vector3 offset = new Vector3(10, 5, 10);
+
+    private void Start()
     {
-        
+        camera = Camera.main;
+    }
+
+    private void Update()
+    {
+        transform.position = camera.transform.position + offset;
     }
 }

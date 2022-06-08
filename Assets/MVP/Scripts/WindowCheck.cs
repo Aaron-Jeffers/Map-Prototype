@@ -17,8 +17,9 @@ public class WindowCheck : MonoBehaviour
     [Tooltip("GameObject to fill in outline with after check threshold is met")]
     [SerializeField] GameObject fill;
     [Tooltip("Determines wether or not to keep checking overlap after initial true check and after the outline has been filled")]
-    [SerializeField] bool checkWindowAfterFill;
-    bool check = true;
+    //[SerializeField] bool checkWindowAfterFill;
+    bool filled;
+    public bool Filled => filled;
 
     private void Start()
     {
@@ -41,10 +42,10 @@ public class WindowCheck : MonoBehaviour
     /// <returns></returns>
     public bool CheckWindow()
     {
-        if (!check) { return false; }
+        if (filled) { return false; }
         if(Raycast("Drop") > RaycastPositions().Count * checkThreshold)
         {
-            check = checkWindowAfterFill;
+            //check = checkWindowAfterFill;
             EnableFill(true);
             return true;
         }
@@ -53,6 +54,7 @@ public class WindowCheck : MonoBehaviour
 
     public void EnableFill(bool value)
     {
+        filled = true;
         fill.SetActive(true);
     }
 
