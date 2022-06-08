@@ -28,6 +28,8 @@ public class Drop : MonoBehaviour
     GameObject dropHolder;
     float timer;
     Vector2 lastMousePos;
+    [SerializeField]
+    bool spawnDirection;
 
     private void Start()
     {
@@ -83,6 +85,7 @@ public class Drop : MonoBehaviour
     void InstantiateDrop()
     {
         int i = GetMouseDirection();
+        if (!spawnDirection) { i = 0; }
         GameObject newInkDrop = Instantiate(drop[i], GetMousePos(), drop[i].transform.rotation, dropHolder.transform);
 
         var scale = newInkDrop.transform.localScale;
