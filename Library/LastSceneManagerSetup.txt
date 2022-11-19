@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/MVP/Scenes/Mechanic 5.unity
+- path: Assets/Production/Scenes/ProductionTemplate.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
